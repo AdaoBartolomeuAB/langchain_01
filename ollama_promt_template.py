@@ -3,8 +3,6 @@ from langchain_community.chat_models import ChatOllama
 from langchain_core.prompts import PromptTemplate
 import streamlit as st
 
-OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
-
 llm = ChatOllama(model="gemma3:4b")
 
 
