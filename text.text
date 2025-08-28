@@ -1,0 +1,19 @@
+def generate(query: str) -> str:
+    db_context = retrieve_from_db(query)
+
+    human_qry_template = HumanMessagePromptTemplate.from_template(
+        """Input:
+        {human_input}
+
+        Context:
+        {db_context}
+
+        Output:
+        """
+    )
+    messages = [
+        SystemMessage(content=question),
+        human_qry_template.format(human_input=query, db_context=db_context)
+    ]
+    response = llm(messages).content
+    return response
